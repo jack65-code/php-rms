@@ -128,7 +128,14 @@ $name = $_POST["cname"];
             <div class="text-center">
                 <h2><?php echo $row["username"];   ?></h2>
                 <span><?php echo $row["email"];   ?></span>
-                <h6><?php echo $row["role"];   ?></h6>
+                <h6><?php
+                if($row["role"] == 0){
+                    echo "Admin";
+                    }else{
+                    echo "Waiter";
+
+                }
+                 ?></h6>
             </div>
             <div class="buttons">
                 <button class="follow">Edit</button>
