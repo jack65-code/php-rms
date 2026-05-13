@@ -5,6 +5,25 @@ if(!isset($_SESSION['name'])){
   header("Location:index.php");
 }
 
+
+
+include("config.php");
+
+if(isset($_POST["btn"])){
+
+$name = $_POST["itemname"];
+$price = $_POST["itemprice"];
+$category = $_POST["category"];
+$stock = $_POST["itemstock"];
+
+
+$q = "INSERT INTO `items`(`item_name`, `item_price`, `item_category`, `item_stock`, `created_At`) VALUES ('$name','$price','$category','$stock',current_timestamp())";
+
+  $query = mysqli_query($connection,$q);
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +90,7 @@ if(!isset($_SESSION['name'])){
                        
 
                             ?>
-                        <option><?php echo $row["cate_name"] ?></option>
+                        <option value="<?php echo $row['cid'] ?>"><?php echo $row["cate_name"] ?></option>
                 <?php
                         }
                 ?>
@@ -82,12 +101,12 @@ if(!isset($_SESSION['name'])){
                         Item Stock
                         <span class="text-danger">*</span>
                       </label>
-                      <input type="number" name="itemname" class="form-control" id="signinEmailInput"
+                      <input type="number" name="itemstock" class="form-control" id="signinEmailInput"
                       placeholder="item Stock"
                       required />
                     </div>
                       <div class="d-grid">
-                      <button name="btn" class="btn btn-primary" type="submit">Add Category</button>
+                      <button name="btn" class="btn btn-primary" type="submit">Add Items</button>
                     </div>
 </form>
 
@@ -111,3 +130,6 @@ include("partials/scripts.html")
 </body>
 
 </html>
+
+
+

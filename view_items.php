@@ -43,7 +43,7 @@ if(!isset($_SESSION['name'])){
               <!-- card header -->
               <div class="card-header border-bottom-0">
                 <div>
-                  <h5 class="mb-0">Category</h5>
+                  <h5 class="mb-0">Items</h5>
                 </div>
               </div>
               <!-- table -->
@@ -51,25 +51,31 @@ if(!isset($_SESSION['name'])){
                 <table class="table text-nowrap mb-0 table-centered table-hover">
                   <thead>
                     <tr>
-                      <th>Category ID</th>
-                      <th>Category Name</th>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Category</th>
+                      <th>Qty</th>
                       <th>Created At</th>
-                      <th>Actions</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     include("config.php");
-                    $query = mysqli_query($connection,"SELECT * FROM category");
+                    $query = mysqli_query($connection,"SELECT * FROM items");
 
                     while($row = mysqli_fetch_assoc($query)){
 
 
                         ?>
                     <tr>
-                      <td><?php echo $row["cid"]; ?></td>
-                      <td><?php echo $row["cate_name"]; ?></td>
-                      <td><?php echo $row["createdAt"]; ?></td>
+                      <td><?php echo $row["itemID"]; ?></td>
+                      <td><?php echo $row["item_name"]; ?></td>
+                      <td><?php echo $row["item_price"]; ?></td>
+                      <td><?php echo $row["item_category"]; ?></td>
+                      <td><?php echo $row["item_stock"]; ?></td>
+                      <td><?php echo $row["created_At"]; ?></td>
                       <td>
                         <a href="#!" class="btn btn-warning btn-sm">Edit</a>
                         <a href="#!" class="btn btn-danger btn-sm">Delete</a>
