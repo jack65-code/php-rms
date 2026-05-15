@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2026 at 03:10 PM
+-- Generation Time: May 15, 2026 at 03:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,31 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`cid`, `cate_name`, `createdAt`) VALUES
 (1, 'fast food', '2026-05-06 12:57:59'),
-(2, 'drinks', '2026-05-06 13:11:44');
+(2, 'drinks', '2026-05-06 13:11:44'),
+(3, 'deserts', '2026-05-11 12:40:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `itemID` int(11) NOT NULL,
+  `item_name` varchar(250) DEFAULT NULL,
+  `item_price` int(11) DEFAULT NULL,
+  `item_category` int(11) DEFAULT NULL,
+  `item_stock` int(11) DEFAULT NULL,
+  `created_At` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`itemID`, `item_name`, `item_price`, `item_category`, `item_stock`, `created_At`) VALUES
+(1, 'Cola Next', 120, 2, 50, '2026-05-13 12:42:30'),
+(2, 'Zinger Burger', 450, 1, 100, '2026-05-13 12:43:30');
 
 -- --------------------------------------------------------
 
@@ -78,6 +102,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`cid`);
 
 --
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`itemID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -92,7 +122,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
