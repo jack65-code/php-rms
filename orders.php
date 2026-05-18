@@ -126,8 +126,7 @@ $name = $_POST["cname"];
 $query1 = mysqli_query($connection,"SELECT * FROM category");
 while($row1 = mysqli_fetch_assoc($query1)){
 
-
-
+ $id = $row1['cid'];
 
 
 ?>
@@ -136,7 +135,7 @@ while($row1 = mysqli_fetch_assoc($query1)){
         class="nav-link"
         id="profile-tab"
         data-bs-toggle="pill"
-        data-bs-target="#fast"
+        data-bs-target="#content-<?php echo $id; ?>"
         type="button"
         role="tab"
       >
@@ -159,15 +158,31 @@ while($row1 = mysqli_fetch_assoc($query1)){
       role="tabpanel">
     <h1>yeh all ka page hai</h1>
   </div>
-    <div
-      class="tab-pane fade"
-      id="fast"
-      role="tabpanel"
-    >
-      <h3>Profile Content</h3>
-      <p>This is Profile tab content.</p>
-    </div>
+    <?php
 
+$query2 = mysqli_query($connection,"SELECT * FROM category");
+
+while($row2 = mysqli_fetch_assoc($query2)){
+
+?>
+
+<div
+  class="tab-pane fade"
+  id="content-<?php echo $row2['cid']; ?>"
+  role="tabpanel"
+>
+  <h3><?php echo $row2['cate_name']; ?></h3>
+
+  <p>
+    This is <?php echo $row2['cate_name']; ?> content.
+  </p>
+</div>
+
+<?php
+}
+?>
+
+</div>
 </div>
 <?php
 
